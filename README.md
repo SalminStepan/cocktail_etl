@@ -31,7 +31,7 @@ clean_storage
 
 ```
 
-Module	Responsibility
+Module	            Responsibility
 sitemap_reader	    Loads the sitemap and returns recipe page URLs.
 page_fetcher	    Downloads recipe page HTML.
 recipe_extractor	Extracts raw recipe data from JSON-LD.
