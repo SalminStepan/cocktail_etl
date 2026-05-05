@@ -12,3 +12,6 @@ dependencies = [
     "httpx",
     "beautifulsoup4",
 ]
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["data*", "tests*"]
