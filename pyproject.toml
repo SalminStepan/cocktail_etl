@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cocktail-etl"
+version = "0.1.0"
+description = "Educational ETL project for extracting cocktail recipes from Difford's Guide."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx",
+    "beautifulsoup4",
+]
