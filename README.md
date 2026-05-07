@@ -1,4 +1,4 @@
-```bash
+
 # Cocktail ETL
 
 Cocktail ETL is a data pipeline for collecting and normalizing cocktail recipe data from structured web sources.
