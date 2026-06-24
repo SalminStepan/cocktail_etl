@@ -1,4 +1,3 @@
-
 # Cocktail ETL
 
 Cocktail ETL is a data pipeline for collecting and normalizing cocktail recipe data from structured web sources.
@@ -30,13 +29,15 @@ Implemented:
 - recipe normalizer
 - clean JSON storage
 - MVP pipeline for the first 10 recipe URLs
+- CLI arguments for sitemap URL, recipe limit, request delay, and output paths
 
 ## MVP v1
 
 The first working version of the project:
 
 - accepts a sitemap URL
-- extracts the first 10 recipe URLs
+- extracts recipe URLs from the sitemap
+- processes a configurable number of recipe pages
 - downloads recipe page HTML
 - extracts JSON-LD Recipe data
 - saves raw data to `data/raw_data.json`
@@ -51,7 +52,7 @@ sitemap_reader -> page_fetcher -> recipe_extractor -> raw_storage -> normalizer 
 
 ## Data Flow
 
-```
+```text
 sitemap URL
 -> recipe URLs
 -> HTML pages
@@ -64,7 +65,7 @@ sitemap URL
 ## Modules
 
 | Module | Responsibility |
-| --- | --- |
+|---|---|
 | `sitemap_reader` | Loads the sitemap and returns recipe page URLs. |
 | `page_fetcher` | Downloads recipe page HTML. |
 | `recipe_extractor` | Extracts raw recipe data from JSON-LD. |
@@ -72,12 +73,12 @@ sitemap URL
 | `normalizer` | Converts raw recipe data into a normalized structure. |
 | `clean_storage` | Saves normalized recipes to `data/clean_data.json`. |
 | `main` | Orchestrates the full MVP pipeline. |
-| `logging_config` | Reserved for application logging configuration. |
+| `logging_config` | Configures application logging. |
 
 ## Output Files
 
 | File | Description |
-| --- | --- |
+|---|---|
 | `data/raw_data.json` | Raw recipe data extracted from JSON-LD. |
 | `data/clean_data.json` | Normalized recipe data prepared for future database import. |
 
@@ -85,7 +86,7 @@ sitemap URL
 
 Each normalized recipe contains:
 
-```
+```text
 source_url
 name
 glass
@@ -98,7 +99,7 @@ parse_errors
 
 Each normalized ingredient contains:
 
-```
+```text
 raw
 amount
 unit
@@ -110,7 +111,7 @@ unresolved
 ## Parse Status
 
 | Status | Meaning |
-| --- | --- |
+|---|---|
 | `ok` | Recipe was normalized without detected issues. |
 | `partial` | Recipe was partially normalized, but some fields or ingredients could not be parsed. |
 | `failed` | Recipe is missing critical data such as name or ingredients. |
@@ -119,19 +120,64 @@ unresolved
 
 Install dependencies:
 
-```
-pip install-e .
+```bash
+pip install -e .
 ```
 
-Run the MVP pipeline:
+Run the pipeline with default settings:
 
+```bash
+python -m app.main
 ```
-python-m app.main
+
+Default run parameters:
+
+| Parameter | Default |
+|---|---|
+| Sitemap URL | `https://www.diffordsguide.com/sitemap/cocktail.xml` |
+| Recipe limit | `10` |
+| Request delay | `1.0` second |
+| Raw output | `data/raw_data.json` |
+| Clean output | `data/clean_data.json` |
+
+Show available CLI options:
+
+```bash
+python -m app.main --help
+```
+
+Run with a custom recipe limit:
+
+```bash
+python -m app.main --limit 3
+```
+
+Run with a custom request delay:
+
+```bash
+python -m app.main --limit 50 --delay 2
+```
+
+Run with custom output files:
+
+```bash
+python -m app.main \
+  --limit 3 \
+  --raw-output data/raw_test.json \
+  --clean-output data/clean_test.json
+```
+
+Run with a custom sitemap URL:
+
+```bash
+python -m app.main \
+  --sitemap-url "https://www.diffordsguide.com/sitemap/cocktail.xml" \
+  --limit 10
 ```
 
 Expected output:
 
-```
+```text
 Processed URLs: 10
 Raw recipes saved: 10
 Clean recipes saved: 10
@@ -145,23 +191,24 @@ Clean recipes saved: 10
 - XML sitemap parsing
 - JSON-LD parsing
 - JSON file storage
+- argparse CLI
+- standard Python logging
 
 ## v1 Limitations
 
 - does not crawl the website recursively
-- processes only the first 10 recipe URLs
+- processes only a limited number of recipe URLs per run
 - does not download images
 - does not write directly to PostgreSQL
 - does not guarantee perfect ingredient parsing
 - does not parse visual HTML; only JSON-LD Recipe data is used
-- does not yet provide CLI arguments
-- uses `print` for MVP output instead of full logging
 
 ## Planned Improvements
 
-- add CLI arguments for sitemap URL, limit, delay, and output paths
-- add structured logging
-- improve ingredient parsing for fractions and non-standard units
+- add validation for CLI arguments
 - add tests for parser and normalizer
+- improve ingredient parsing for fractions and non-standard units
+- improve glassware and garnish extraction
 - add PostgreSQL import
 - add resume support for already processed URLs
+- add optional file logging
