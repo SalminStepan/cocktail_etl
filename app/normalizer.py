@@ -79,7 +79,9 @@ def normalize_recipe(raw_recipe: dict) -> dict:
     parse_errors = []
     source_url = raw_recipe.get("source_url")
     name = raw_recipe.get("name")
-    
+    description = raw_recipe.get("description")
+    image_url =  raw_recipe.get("image_url")
+
     if not name:
         parse_errors.append("name missing")
     
@@ -95,6 +97,8 @@ def normalize_recipe(raw_recipe: dict) -> dict:
         clean_recipe = {
             "source_url": source_url,
             "name": name,
+            "description": description,
+            "image_url": image_url,
             "glass": None,
             "garnish": None,
             "method": None,
@@ -128,6 +132,8 @@ def normalize_recipe(raw_recipe: dict) -> dict:
     clean_recipe = {
         "source_url": source_url,
         "name": name,
+        "description": description,
+        "image_url": image_url,
         "glass": glass,
         "garnish": garnish,
         "method": method,

@@ -60,6 +60,9 @@ def test_normalize_recipe_pos_case():
     }
     result = normalize_recipe(raw_recipe)
     assert result["parse_status"] == "ok"
+    assert result["image_url"] == "https://cdn.diffordsguide.com/cocktail/NAmyA8/square/0/512x512.webp?v=1737701571"
+    assert result["description"] == "Discover how to make an Abbey using Gin, Americano bianco, Orange juice and Aromatic bitters in just 5 easy to follow steps"   
+
 
 def test_normalize_recipe_missing_name():
     raw_recipe = {

@@ -2,6 +2,8 @@
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/1/abacaxi-ricaco",
     "name": "Abacaxi Ricaço",
+    "description": "Discover how to make an Abacaxi Ricaço using Pineapple (fresh), Light gold rum 1-3yo, Lime juice and Superfine/caster sugar in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/KO58rv/square/0/512x512.webp?v=1737701571",
     "glass": "PINEAPPLE SHELL (FROZEN) GLASS",
     "garnish": "off a small pineapple and carefully scoop out the flesh from the base to leave a shell with 12mm (½ inch) thick walls Place the shell in a freezer to chill",
     "method": "BLEND",
@@ -47,6 +49,8 @@
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/3/abbey",
     "name": "Abbey",
+    "description": "Discover how to make an Abbey using Gin, Americano bianco, Orange juice and Aromatic bitters in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/NAmyA8/square/0/512x512.webp?v=1737701571",
     "glass": "COUPE GLASS",
     "garnish": "lemon zest twist",
     "method": "SHAKE",
@@ -90,6 +94,8 @@
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/4/abc-cocktail",
     "name": "A.B.C. Cocktail",
+    "description": "Discover how to make an A.B.C. Cocktail using Mint leaves, Tawny port, Cognac (brandy), Maraschino liqueur (+ 1 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/oryYr7/square/0/512x512.webp?v=1737701571",
     "glass": "NICK &AMP; NORA GLASS",
     "garnish": "lemon zest twist and Luxardo Maraschino Cherry",
     "method": "SHAKE",
@@ -139,5 +145,314 @@
     "parse_errors": [
       "Unresolved ingredient: 7 fresh Mint leaves"
     ]
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/5/absinthe-cocktail",
+    "name": "Absinthe Cocktail",
+    "description": "Discover how to make an Absinthe Cocktail using Absinthe, Chilled water and Sugar syrup (2:1) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/PrLWAL/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "for garnish",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Absinthe",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Absinthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "75 ml Chilled water",
+        "amount": 75.0,
+        "unit": "ml",
+        "name": "Chilled water",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Sugar syrup (2:1)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/6/absinthe-frappe",
+    "name": "Absinthe Frappé",
+    "description": "Discover how to make an Absinthe Frappé using Absinthe, Anisette liqueur, Chilled water and Sugar syrup (2:1) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/kA6LOn/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "mint sprigs bouquet",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Absinthe",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Absinthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Anisette liqueur",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Anisette liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Chilled water",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Chilled water",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Sugar syrup (2:1)",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/7/absinthe-sour",
+    "name": "Absinthe Sour",
+    "description": "Discover how to make an Absinthe Sour using Absinthe, Sugar syrup (2:1), Lemon juice, Egg white (pasteurised) and Creole bitters in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/NrbDRy/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "lemon zest twist and Luxardo Maraschino Cherry",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "25 ml Absinthe",
+        "amount": 25.0,
+        "unit": "ml",
+        "name": "Absinthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Sugar syrup (2:1)",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lemon juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Egg white (pasteurised)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "2 dash Creole bitters",
+        "amount": 2.0,
+        "unit": "dash",
+        "name": "Creole bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/8/absinthe-suisesse",
+    "name": "Absinthe Suisesse",
+    "description": "Discover how to make an Absinthe Suisesse using Absinthe, Orgeat syrup, Egg white (pasteurised) and Whipping cream in just 5 easy to follow steps",
+    "image_url": "/assets/images/themes/default_v5/cocktails/pixelated.jpg",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "for garnish",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Absinthe",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Absinthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Orgeat syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Orgeat syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Egg white (pasteurised)",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Whipping cream",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/9/absinthe-without-leave",
+    "name": "Absinthe Without Leave",
+    "description": "Discover how to make an Absinthe Without Leave using Green banana liqueur, Irish cream liqueur and Absinthe in just 3 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/JRJwAp/square/0/512x512.webp?v=1737701571",
+    "glass": "SHOT GLASS",
+    "garnish": null,
+    "method": null,
+    "ingredients": [
+      {
+        "raw": "22.5 ml Green banana liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Green banana liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Irish cream liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Irish cream liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Absinthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Absinthe",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "partial",
+    "parse_errors": [
+      "method not found"
+    ]
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/10/absolutely-fabulous",
+    "name": "Absolutely Fabulous",
+    "description": "Discover how to make an Absolutely Fabulous using Vodka, Cranberry juice and Brut sparkling wine in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/LR1YRw/square/0/512x512.webp?v=1737701571",
+    "glass": "FLUTE GLASS",
+    "garnish": "fresh strawberry",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Vodka",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "45 ml Cranberry juice",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Cranberry juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "45 ml Brut sparkling wine",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Brut sparkling wine",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/11/acapulco",
+    "name": "Acapulco",
+    "description": "Discover how to make an Acapulco using Reposado tequila, Light gold rum 1-3yo, Pink grapefruit juice (+ 2 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/zAMvrP/square/0/512x512.webp?v=1737701571",
+    "glass": "COLLINS GLASS",
+    "garnish": "pineapple wedge",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Reposado tequila",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Light gold rum 1-3yo",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Light gold rum 1-3yo",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Pink grapefruit juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Pink grapefruit juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "60 ml Pineapple juice",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Pineapple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Sugar syrup (2:1)",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
   }
 ]
