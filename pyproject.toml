@@ -11,6 +11,7 @@ requires-python = ">=3.10"
 dependencies = [
     "httpx",
     "beautifulsoup4",
+    "psycopg[binary]",
 ]
 [tool.setuptools.packages.find]
 include = ["app*"]
