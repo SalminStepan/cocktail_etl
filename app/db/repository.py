@@ -54,3 +54,46 @@ def upsert_cocktail(conn, clean_recipe: dict) -> int:
 
         row = cur.fetchone()
         return row["id"]
+
+def replace_ingredients(conn, cocktail_id: int, ingredients: list[dict] | None) -> None:
+    with conn.cursor() as cur:
+        cur.execute("DELETE FROM ingredients WHERE cocktail_id = %(cocktail_id)s", {"cocktail_id": cocktail_id})
+        if not ingredients:
+            return
+
+        for position, ingredient in enumerate(ingredients, start=1):
+            params = {
+                "cocktail_id": cocktail_id,
+                "position": position,
+                "raw": ingredient["raw"],
+                "amount": ingredient.get("amount"),
+                "unit": ingredient.get("unit"),
+                "name": ingredient.get("name"),
+                "comment": ingredient.get("comment"),
+                "unresolved": ingredient["unresolved"],
+            }
+            cur.execute(
+                """
+                INSERT INTO ingredients (
+                    cocktail_id,
+                    position,
+                    raw,
+                    amount,
+                    unit,
+                    name,
+                    comment,
+                    unresolved
+                )
+                VALUES (
+                    %(cocktail_id)s,
+                    %(position)s,
+                    %(raw)s,
+                    %(amount)s,
+                    %(unit)s,
+                    %(name)s,
+                    %(comment)s,
+                    %(unresolved)s
+                )
+                """,
+                params
+            )
