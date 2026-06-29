@@ -26,4 +26,3 @@ CREATE TABLE IF NOT EXISTS ingredients (
     UNIQUE (cocktail_id, position)
 );
 
-export DATABASE_URL="dbname=cocktail_etl user=postgres"
