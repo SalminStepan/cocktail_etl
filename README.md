@@ -1,214 +1,206 @@
 # Cocktail ETL
 
-Cocktail ETL is a data pipeline for collecting and normalizing cocktail recipe data from structured web sources.
+ETL pipeline for extracting, normalizing, and importing cocktail recipe data from structured web sources into PostgreSQL.
 
-The project extracts recipe URLs from a sitemap, downloads recipe pages, reads structured JSON-LD Recipe data, stores raw source data, normalizes recipe fields, and prepares clean JSON output for future database import.
+The project collects cocktail recipe URLs from a sitemap, extracts structured JSON-LD recipe data, normalizes it into a clean internal format, and imports the result into a relational PostgreSQL database.
 
-## Business Problem
+## Features
 
-Bars, restaurants, and beverage teams often store cocktail recipes in scattered formats: notes, spreadsheets, books, websites, or internal chat messages.
+* Reads cocktail recipe URLs from sitemap XML
+* Fetches recipe pages with request delay
+* Extracts structured JSON-LD `Recipe` data
+* Saves raw recipe data to JSON
+* Normalizes ingredients, method, glass, garnish, image URL, and description
+* Tracks parsing quality with `parse_status` and `parse_errors`
+* Stores normalized cocktail data in PostgreSQL
+* Uses idempotent cocktail upsert by `source_url`
+* Replaces ingredient lists during re-import to avoid duplicates
+* Provides CLI commands for ETL and database import
+* Includes pytest coverage for normalization logic
 
-This makes it difficult to:
-
-- build a searchable cocktail database
-- standardize recipes across teams
-- import recipes into internal tools
-- analyze ingredients, methods, glassware, and garnishes
-- keep recipe data structured and reusable
-
-This project solves the data preparation layer: it turns external structured recipe pages into normalized data that can be used by a recipe database, Telegram bot, admin panel, or bar management system.
-
-## Current Status
-
-Implemented:
-
-- sitemap reader
-- recipe page fetcher
-- JSON-LD Recipe extractor
-- raw JSON storage
-- recipe normalizer
-- clean JSON storage
-- MVP pipeline for the first 10 recipe URLs
-- CLI arguments for sitemap URL, recipe limit, request delay, and output paths
-
-## MVP v1
-
-The first working version of the project:
-
-- accepts a sitemap URL
-- extracts recipe URLs from the sitemap
-- processes a configurable number of recipe pages
-- downloads recipe page HTML
-- extracts JSON-LD Recipe data
-- saves raw data to `data/raw_data.json`
-- normalizes raw recipe data
-- saves normalized data to `data/clean_data.json`
-
-## Architecture
+## Pipeline
 
 ```text
-sitemap_reader -> page_fetcher -> recipe_extractor -> raw_storage -> normalizer -> clean_storage
+sitemap.xml
+    ↓
+recipe URLs
+    ↓
+HTML pages
+    ↓
+JSON-LD Recipe blocks
+    ↓
+raw_data.json
+    ↓
+clean_data.json
+    ↓
+PostgreSQL
 ```
 
-## Data Flow
+## Project structure
 
 ```text
-sitemap URL
--> recipe URLs
--> HTML pages
--> JSON-LD Recipe data
--> raw recipes
--> normalized recipes
--> JSON output files
+cocktail_etl/
+├── app/
+│   ├── db/
+│   │   ├── connection.py
+│   │   ├── importer.py
+│   │   ├── repository.py
+│   │   └── schema.sql
+│   ├── clean_storage.py
+│   ├── import_clean_data.py
+│   ├── logging_config.py
+│   ├── main.py
+│   ├── normalizer.py
+│   ├── page_fetcher.py
+│   ├── raw_storage.py
+│   ├── recipe_extractor.py
+│   ├── schemas.py
+│   └── sitemap_reader.py
+├── data/
+│   ├── raw_data.json
+│   └── clean_data.json
+├── tests/
+├── pyproject.toml
+└── README.md
 ```
 
-## Modules
+## Requirements
 
-| Module | Responsibility |
-|---|---|
-| `sitemap_reader` | Loads the sitemap and returns recipe page URLs. |
-| `page_fetcher` | Downloads recipe page HTML. |
-| `recipe_extractor` | Extracts raw recipe data from JSON-LD. |
-| `raw_storage` | Saves raw recipes to `data/raw_data.json`. |
-| `normalizer` | Converts raw recipe data into a normalized structure. |
-| `clean_storage` | Saves normalized recipes to `data/clean_data.json`. |
-| `main` | Orchestrates the full MVP pipeline. |
-| `logging_config` | Configures application logging. |
+* Python 3.12+
+* PostgreSQL
+* `httpx`
+* `beautifulsoup4`
+* `psycopg`
+* `pytest` for development/testing
 
-## Output Files
-
-| File | Description |
-|---|---|
-| `data/raw_data.json` | Raw recipe data extracted from JSON-LD. |
-| `data/clean_data.json` | Normalized recipe data prepared for future database import. |
-
-## Clean Recipe Structure
-
-Each normalized recipe contains:
-
-```text
-source_url
-name
-glass
-garnish
-method
-ingredients
-parse_status
-parse_errors
-```
-
-Each normalized ingredient contains:
-
-```text
-raw
-amount
-unit
-name
-comment
-unresolved
-```
-
-## Parse Status
-
-| Status | Meaning |
-|---|---|
-| `ok` | Recipe was normalized without detected issues. |
-| `partial` | Recipe was partially normalized, but some fields or ingredients could not be parsed. |
-| `failed` | Recipe is missing critical data such as name or ingredients. |
-
-## How to Run
-
-Install dependencies:
+## Installation
 
 ```bash
-pip install -e .
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -e ".[dev]"
 ```
 
-Run the pipeline with default settings:
+## Database setup
+
+Create PostgreSQL database:
 
 ```bash
-python -m app.main
+sudo -u postgres createdb cocktail_etl
 ```
 
-Default run parameters:
+Apply schema:
 
-| Parameter | Default |
-|---|---|
-| Sitemap URL | `https://www.diffordsguide.com/sitemap/cocktail.xml` |
-| Recipe limit | `10` |
-| Request delay | `1.0` second |
-| Raw output | `data/raw_data.json` |
-| Clean output | `data/clean_data.json` |
+```bash
+sudo -u postgres psql -d cocktail_etl -f app/db/schema.sql
+```
 
-Show available CLI options:
+Create a database user for the application and set `DATABASE_URL`:
+
+```bash
+export DATABASE_URL="postgresql://cocktail_user:cocktail_password@localhost:5432/cocktail_etl"
+```
+
+Do not commit real database credentials. Use environment variables or a local `.env` file.
+
+## Usage
+
+Run the ETL pipeline and generate JSON files:
+
+```bash
+python -m app.main --limit 10
+```
+
+Custom input/output options are available:
 
 ```bash
 python -m app.main --help
 ```
 
-Run with a custom recipe limit:
+Import normalized data into PostgreSQL:
 
 ```bash
-python -m app.main --limit 3
+python -m app.import_clean_data --input data/clean_data.json
 ```
 
-Run with a custom request delay:
+Default import path:
 
 ```bash
-python -m app.main --limit 50 --delay 2
+python -m app.import_clean_data
 ```
 
-Run with custom output files:
+## Database model
+
+### `cocktails`
+
+Stores normalized cocktail-level data:
+
+* source
+* source_url
+* name
+* description
+* image_url
+* glass
+* garnish
+* method
+* parse_status
+* created_at
+* updated_at
+
+`source_url` is unique and is used for idempotent imports.
+
+### `ingredients`
+
+Stores ordered ingredients for each cocktail:
+
+* cocktail_id
+* position
+* raw
+* amount
+* unit
+* name
+* comment
+* unresolved
+
+Ingredients are replaced on each import for a cocktail, so repeated imports do not create duplicate ingredient rows.
+
+## Testing
+
+Run tests:
 
 ```bash
-python -m app.main \
-  --limit 3 \
-  --raw-output data/raw_test.json \
-  --clean-output data/clean_test.json
+pytest
 ```
 
-Run with a custom sitemap URL:
+The test suite currently covers:
 
-```bash
-python -m app.main \
-  --sitemap-url "https://www.diffordsguide.com/sitemap/cocktail.xml" \
-  --limit 10
-```
+* ingredient parsing
+* method extraction
+* glass extraction
+* garnish extraction
+* full recipe normalization
 
-Expected output:
+## Current status
 
-```text
-Processed URLs: 10
-Raw recipes saved: 10
-Clean recipes saved: 10
-```
+Implemented:
 
-## Tech Stack
+* sitemap reading
+* page fetching
+* JSON-LD recipe extraction
+* raw and clean JSON storage
+* recipe normalization
+* PostgreSQL schema
+* database connection
+* cocktail upsert
+* ingredient replacement
+* clean JSON import command
+* normalization tests
 
-- Python
-- httpx
-- BeautifulSoup
-- XML sitemap parsing
-- JSON-LD parsing
-- JSON file storage
-- argparse CLI
-- standard Python logging
+Planned:
 
-## v1 Limitations
-
-- does not crawl the website recursively
-- processes only a limited number of recipe URLs per run
-- does not download images
-- does not write directly to PostgreSQL
-- does not guarantee perfect ingredient parsing
-- does not parse visual HTML; only JSON-LD Recipe data is used
-
-## Planned Improvements
-
-- add validation for CLI arguments
-- add tests for parser and normalizer
-- improve ingredient parsing for fractions and non-standard units
-- improve glassware and garnish extraction
-- add PostgreSQL import
-- add resume support for already processed URLs
-- add optional file logging
+* import logging improvements
+* repository tests
+* search queries for bot integration
+* bot database adapter
+* optional FastAPI layer
