@@ -133,7 +133,7 @@ def test_normalize_recipe_unresolved_ingredient():
         "description": "Discover how to make an Abacaxi Ricaço using Pineapple (fresh), Light gold rum 1-3yo, Lime juice and Superfine/caster sugar in 6 easy to follow steps",
         "image_url": "https://cdn.diffordsguide.com/cocktail/KO58rv/square/0/512x512.webp?v=1737701571",
         "ingredients_raw": [
-        "1 whole Pineapple (fresh)",
+        "1 hole Pineapple (fresh)",
         "90 ml Light gold rum 1-3yo",
         "22.5 ml Lime juice",
         "15 ml Superfine/caster sugar"

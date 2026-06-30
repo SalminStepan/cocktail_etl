@@ -50,3 +50,8 @@ def test_parse_ingredient_returns_unresolved_for_invalid_amount():
     assert result["name"] is None
     assert result["comment"] is None
     assert result["unresolved"] is True
+
+
+#"1 whole Pineapple (fresh)" -> parsed
+#"4 slice Fresh ginger" -> parsed
+#"7 fresh Mint leaves" -> amount 7, unit count

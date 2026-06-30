@@ -131,3 +131,5 @@ def test_extract_glass_name_with_dots():
     ]
     result = extract_glass(instructions_raw)
     assert result == "PINEAPPLE SHELL (FROZEN) GLASS"
+
+#"NICK &AMP; NORA GLASS" -> NICK & NORA GLASS

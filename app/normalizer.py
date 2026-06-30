@@ -1,5 +1,9 @@
+import html
+
 def parse_ingredient(ingredient_raw: str) -> dict:
-    units = ["ml", "dash", "barspoon", "drop"]
+    units = ["ml", "dash", "barspoon", "drop", "whole", "cube", "slice"]
+    counts = ["leaves", "leaf"]
+
     unresolved = {
         "raw": ingredient_raw,
         "amount": None,
@@ -18,21 +22,32 @@ def parse_ingredient(ingredient_raw: str) -> dict:
     except ValueError:
         return unresolved
     
-    if parts[1] not in units:
-        return unresolved
+    if parts[1] in units:
+        unit = parts[1]
+        name = " ".join(parts[2:])
+        parsed_ingredient = {
+            "raw": ingredient_raw,
+            "amount": amount,
+            "unit": unit,
+            "name": name,
+            "comment": None,
+            "unresolved": False
+        }
+        return parsed_ingredient
 
-    unit = parts[1]
-    name = " ".join(parts[2:])
-
-    parsed_ingredient = {
-        "raw": ingredient_raw,
-        "amount": amount,
-        "unit": unit,
-        "name": name,
-        "comment": None,
-        "unresolved": False
-    }
-    return parsed_ingredient
+    if parts[-1] in counts:
+        unit = "count"
+        name = " ".join(parts[1:])
+        parsed_ingredient = {
+            "raw": ingredient_raw,
+            "amount": amount,
+            "unit": unit,
+            "name": name,
+            "comment": None,
+            "unresolved": False
+        }
+        return parsed_ingredient
+    return unresolved
 
 def parse_ingredients(ingredients_raw: list[str]) -> list[dict]:
     clean_parsed_ingredients = [parse_ingredient(ingredient_raw) for ingredient_raw in ingredients_raw]
@@ -65,9 +80,13 @@ def extract_glass(instructions_raw: list[dict]) -> str | None:
         step_name = step.get("name", "")
         if step_name != "Prepare glass":
             continue
-        text = step.get("text", "").split()
-        glass = []        
-        for word in text:
+        
+        text = step.get("text", "")
+        text = html.unescape(text)
+        words = text.split()
+        
+        glass = []
+        for word in words:
             if word == word.upper():
                 glass.append(word.strip(".,"))
         if glass:

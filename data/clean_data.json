@@ -10,11 +10,11 @@
     "ingredients": [
       {
         "raw": "1 whole Pineapple (fresh)",
-        "amount": null,
-        "unit": null,
-        "name": null,
+        "amount": 1.0,
+        "unit": "whole",
+        "name": "Pineapple (fresh)",
         "comment": null,
-        "unresolved": true
+        "unresolved": false
       },
       {
         "raw": "90 ml Light gold rum 1-3yo",
@@ -41,10 +41,8 @@
         "unresolved": false
       }
     ],
-    "parse_status": "partial",
-    "parse_errors": [
-      "Unresolved ingredient: 1 whole Pineapple (fresh)"
-    ]
+    "parse_status": "ok",
+    "parse_errors": []
   },
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/3/abbey",
@@ -96,17 +94,17 @@
     "name": "A.B.C. Cocktail",
     "description": "Discover how to make an A.B.C. Cocktail using Mint leaves, Tawny port, Cognac (brandy), Maraschino liqueur (+ 1 more) in just 4 easy to follow steps",
     "image_url": "https://cdn.diffordsguide.com/cocktail/oryYr7/square/0/512x512.webp?v=1737701571",
-    "glass": "NICK &AMP; NORA GLASS",
+    "glass": "NICK & NORA GLASS",
     "garnish": "lemon zest twist and Luxardo Maraschino Cherry",
     "method": "SHAKE",
     "ingredients": [
       {
         "raw": "7 fresh Mint leaves",
-        "amount": null,
-        "unit": null,
-        "name": null,
+        "amount": 7.0,
+        "unit": "count",
+        "name": "fresh Mint leaves",
         "comment": null,
-        "unresolved": true
+        "unresolved": false
       },
       {
         "raw": "30 ml Tawny port",
@@ -141,10 +139,8 @@
         "unresolved": false
       }
     ],
-    "parse_status": "partial",
-    "parse_errors": [
-      "Unresolved ingredient: 7 fresh Mint leaves"
-    ]
+    "parse_status": "ok",
+    "parse_errors": []
   },
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/5/absinthe-cocktail",
@@ -333,7 +329,7 @@
     "image_url": "https://cdn.diffordsguide.com/cocktail/JRJwAp/square/0/512x512.webp?v=1737701571",
     "glass": "SHOT GLASS",
     "garnish": null,
-    "method": null,
+    "method": "LAYER",
     "ingredients": [
       {
         "raw": "22.5 ml Green banana liqueur",
@@ -360,10 +356,8 @@
         "unresolved": false
       }
     ],
-    "parse_status": "partial",
-    "parse_errors": [
-      "method not found"
-    ]
+    "parse_status": "ok",
+    "parse_errors": []
   },
   {
     "source_url": "https://www.diffordsguide.com/cocktails/recipe/10/absolutely-fabulous",
@@ -448,6 +442,1880 @@
         "amount": 10.0,
         "unit": "ml",
         "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/12/acapulco-daiquiri",
+    "name": "Acapulco Daiquiri",
+    "description": "Discover how to make an Acapulco Daiquiri using Light white rum, Triple sec, Lemon juice, Lime cordial (+ 1 more) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/nOz1r1/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "lime wedge",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Light white rum",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Light white rum",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Triple sec",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Triple sec",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Lemon juice",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Lime cordial",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Lime cordial",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Egg white (pasteurised)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/13/ace",
+    "name": "Ace",
+    "description": "Discover how to make an Ace using Gin, Grenadine syrup, Whipping cream and Egg white (pasteurised) in 7 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/VRjZRM/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "skewered Luxardo Maraschino Cherry",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "50 ml Gin",
+        "amount": 50.0,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Grenadine syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Grenadine syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Whipping cream",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Egg white (pasteurised)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/14/ace-of-clubs-daiquiri",
+    "name": "Ace Of Clubs Daiquiri",
+    "description": "Discover how to make an Ace Of Clubs Daiquiri using Light gold rum 1-3yo, White crème de cacao, Lime juice (+ 1 more) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/9REeRg/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "cocoa powder",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Light gold rum 1-3yo",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Light gold rum 1-3yo",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White crème de cacao",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White crème de cacao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lime juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lime juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Sugar syrup (2:1)",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/15/achilles-heel",
+    "name": "Achilles Heel",
+    "description": "Discover how to make an Achilles Heel using Bison grass vodka, Black raspberry liqueur, Peach schnapps (+ 2 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/zA9mA0/square/0/512x512.webp?v=1737701571",
+    "glass": "COLLINS GLASS",
+    "garnish": "apple slice",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Bison grass vodka",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Bison grass vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Black raspberry liqueur",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Black raspberry liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Peach schnapps",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Peach schnapps",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "60 ml Apple juice",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Apple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lemon juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/16/adam-and-eve",
+    "name": "Adam and Eve",
+    "description": "Discover how to make an Adam and Eve using Bourbon whiskey, Galliano liqueur, Sugar syrup (2:1) and Aromatic bitters in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/JRKJOp/square/0/512x512.webp?v=1758199162",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "lemon zest twist",
+    "method": "STIR",
+    "ingredients": [
+      {
+        "raw": "60 ml Bourbon whiskey",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Bourbon whiskey",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Galliano liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Galliano liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Sugar syrup (2:1)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "3 dash Aromatic bitters",
+        "amount": 3.0,
+        "unit": "dash",
+        "name": "Aromatic bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/17/adios",
+    "name": "Adios",
+    "description": "Discover how to make an Adios using Coffee liqueur and Reposado tequila in just 5 easy to follow steps",
+    "image_url": "/assets/images/themes/default_v5/cocktails/pixelated.jpg",
+    "glass": "SHOT GLASS",
+    "garnish": "prepare",
+    "method": "LAYER",
+    "ingredients": [
+      {
+        "raw": "22.5 ml Coffee liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Reposado tequila",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/18/adonis",
+    "name": "Adonis",
+    "description": "Discover how to make an Adonis using Palo cortado sherry, Amontillado sherry, Rosso/sweet vermouth and Red bitter liqueur in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/XOd7r9/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "orange zest twist and skewered green olive",
+    "method": "THROW",
+    "ingredients": [
+      {
+        "raw": "30 ml Palo cortado sherry",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Palo cortado sherry",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Amontillado sherry",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Amontillado sherry",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Rosso/sweet vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Rosso/sweet vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "2.5 ml Red bitter liqueur",
+        "amount": 2.5,
+        "unit": "ml",
+        "name": "Red bitter liqueur",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/19/affinity",
+    "name": "Affinity",
+    "description": "Discover how to make an Affinity using Scotch whisky, Vermouth amaro (Coc.), Dry vermouth and Aromatic bitters in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/wrNEA3/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "lemon zest twist",
+    "method": "STIR",
+    "ingredients": [
+      {
+        "raw": "30 ml Scotch whisky",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Scotch whisky",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Vermouth amaro (Coc.)",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Vermouth amaro (Coc.)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Dry vermouth",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Dry vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "1 dash Aromatic bitters",
+        "amount": 1.0,
+        "unit": "dash",
+        "name": "Aromatic bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/20/after-eight",
+    "name": "After Eight",
+    "description": "Discover how to make an After Eight using Vodka, White crème de cacao and Green crème de menthe in just 3 easy to follow steps",
+    "image_url": "/assets/images/themes/default_v5/cocktails/pixelated.jpg",
+    "glass": "SHOT GLASS",
+    "garnish": null,
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "15 ml Vodka",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White crème de cacao",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White crème de cacao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Green crème de menthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Green crème de menthe",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/21/after-six-shot",
+    "name": "After Six Shot",
+    "description": "Discover how to make an After Six Shot using Coffee liqueur, White crème de menthe and Irish cream liqueur in just 5 easy to follow steps",
+    "image_url": "/assets/images/themes/default_v5/cocktails/pixelated.jpg",
+    "glass": "SHOT GLASS",
+    "garnish": "prepare",
+    "method": "LAYER",
+    "ingredients": [
+      {
+        "raw": "15 ml Coffee liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White crème de menthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White crème de menthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Irish cream liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Irish cream liqueur",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/22/afterburner",
+    "name": "Afterburner",
+    "description": "Discover how to make an Afterburner using White crème de menthe, White overproof rum and Coffee liqueur in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/6RawrG/square/0/512x512.webp?v=1737701571",
+    "glass": "SNIFTER/BRANDY BALLOON GLASS",
+    "garnish": null,
+    "method": "POUR",
+    "ingredients": [
+      {
+        "raw": "30 ml White crème de menthe",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "White crème de menthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White overproof rum",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White overproof rum",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Coffee liqueur",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/24/aged-honey-daiquiri",
+    "name": "Aged Honey Daiquiri",
+    "description": "Discover how to make an Aged Honey Daiquiri using Aged rum (6-10yr), Lime juice, Honey and water syrup and Chilled water in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/nRw2Oz/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "lime wedge",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Aged rum (6-10yr)",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Aged rum (6-10yr)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lime juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lime juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Honey and water syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Honey and water syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Chilled water",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Chilled water",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/26/aggravation",
+    "name": "Aggravation",
+    "description": "Discover how to make an Aggravation using Scotch whisky, Coffee liqueur, Whipping cream and Sugar syrup (2:1) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/GrWkrw/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "grated nutmeg",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Scotch whisky",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Scotch whisky",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Coffee liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Whipping cream",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Sugar syrup (2:1)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/27/air-mail",
+    "name": "Air Mail",
+    "description": "Discover how to make an Air Mail using Light gold rum 1-3yo, Lime juice, Honey and water syrup and Brut sparkling wine in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/3O7oOk/square/0/512x512.webp?v=1737701571",
+    "glass": "HIGHBALL (MAX 10OZ/300ML) GLASS",
+    "garnish": "lime zest twist or mint sprig tip",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Light gold rum 1-3yo",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Light gold rum 1-3yo",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lime juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lime juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Honey and water syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Honey and water syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "50 ml Brut sparkling wine",
+        "amount": 50.0,
+        "unit": "ml",
+        "name": "Brut sparkling wine",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/28/a-j",
+    "name": "A. J.",
+    "description": "Discover how to make an A. J. using Calvados apple brandy, Pink grapefruit juice and Sugar syrup (2:1) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/vAxGR1/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "for garnish",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "50 ml Calvados apple brandy",
+        "amount": 50.0,
+        "unit": "ml",
+        "name": "Calvados apple brandy",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "50 ml Pink grapefruit juice",
+        "amount": 50.0,
+        "unit": "ml",
+        "name": "Pink grapefruit juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Sugar syrup (2:1)",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/29/alabama-slammer-straight-up",
+    "name": "Alabama Slammer (straight-up)",
+    "description": "Discover how to make an Alabama Slammer (straight-up) using Vodka, Southern liqueur, Orange juice and Grenadine syrup in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/3r8VRb/square/0/512x512.webp?v=1737701571",
+    "glass": "MARTINI GLASS",
+    "garnish": "orange zest twist",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Vodka",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Southern liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Southern liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Orange juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Orange juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Grenadine syrup",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Grenadine syrup",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/30/alabama-slammer",
+    "name": "Alabama Slammer",
+    "description": "Discover how to make an Alabama Slammer using Southern liqueur, Amaretto liqueur, Sloe gin liqueur, Orange juice (+ 1 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/YrgkrV/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "peach slice",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Southern liqueur",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Southern liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Amaretto liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Amaretto liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Sloe gin liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Sloe gin liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "60 ml Orange juice",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Orange juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Lemon juice",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/31/alamagoozlum-cocktail",
+    "name": "Alamagoozlum Cocktail",
+    "description": "Discover how to make an Alamagoozlum Cocktail using Oude genever, Aged Jamaican rum, Chartreuse Yellow (+ 5 more) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/7AQpRw/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "pineapple wedge",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "20 ml Oude genever",
+        "amount": 20.0,
+        "unit": "ml",
+        "name": "Oude genever",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Aged Jamaican rum",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Aged Jamaican rum",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Chartreuse Yellow",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Chartreuse Yellow",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Orange Curaçao",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Orange Curaçao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Aromatic bitters",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Aromatic bitters",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Sugar syrup (2:1)",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "20 ml Chilled water",
+        "amount": 20.0,
+        "unit": "ml",
+        "name": "Chilled water",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Egg white (pasteurised)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/32/alans-apple-breeze",
+    "name": "Alan's Apple Breeze",
+    "description": "Discover how to make an Alan's Apple Breeze using Light white rum, Apricot liqueur, Apple juice, Cranberry juice (+ 2 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/GreVO0/square/0/512x512.webp?v=1737701571",
+    "glass": "COLLINS GLASS",
+    "garnish": "apple wedge ",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Light white rum",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Light white rum",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Apricot liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Apricot liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "45 ml Apple juice",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Apple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "45 ml Cranberry juice",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Cranberry juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lime juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lime juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Sugar syrup (2:1)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/33/alaska-savoy-recipe",
+    "name": "Alaska (Savoy recipe)",
+    "description": "Discover how to make an Alaska (Savoy recipe) using Gin, Chartreuse Yellow and Chilled water in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/3r4bRe/square/0/512x512.webp?v=1737701571",
+    "glass": "NICK & NORA GLASS",
+    "garnish": "orange zest twist",
+    "method": "STIR",
+    "ingredients": [
+      {
+        "raw": "45 ml Gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Chartreuse Yellow",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Chartreuse Yellow",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Chilled water",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Chilled water",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/34/alessandro",
+    "name": "Alessandro",
+    "description": "Discover how to make an Alessandro using Gin, Black sambuca liqueur, Milk  (whole/full 3-4% fat) and Whipping cream in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/POlYR1/square/0/512x512.webp?v=1737701571",
+    "glass": "MARTINI GLASS",
+    "garnish": "lemon zest twist",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "22.5 ml Gin",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Black sambuca liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Black sambuca liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Milk  (whole/full 3-4% fat)",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Milk (whole/full 3-4% fat)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Whipping cream",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/35/alexander",
+    "name": "Alexander",
+    "description": "Discover how to make an Alexander using Gin, White crème de cacao, Whipping cream and Egg white (pasteurised) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/gO3nrB/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "grated nutmeg",
+    "method": "DRY SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml White crème de cacao",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "White crème de cacao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Whipping cream",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "10 ml Egg white (pasteurised)",
+        "amount": 10.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/36/alexander-the-great",
+    "name": "Alexander The Great",
+    "description": "Discover how to make an Alexander The Great using Vodka, Coffee liqueur, White crème de cacao, Whipping cream (+ 1 more) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/gAp0Aj/square/1/512x512.webp?v=1754561880",
+    "glass": "COUPE GLASS",
+    "garnish": "grated nutmeg",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Vodka",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Coffee liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White crème de cacao",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White crème de cacao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Whipping cream",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Egg white (pasteurised)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/37/alexanders-big-brother",
+    "name": "Alexander's Big Brother",
+    "description": "Discover how to make an Alexander's Big Brother using Gin, Triple sec, Blue curaçao liqueur, Whipping cream (+ 2 more) in 6 easy to follow steps",
+    "image_url": "/assets/images/themes/default_v5/cocktails/pixelated.jpg",
+    "glass": "COUPE GLASS",
+    "garnish": "physalis (cape gooseberry)",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Triple sec",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Triple sec",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Blue curaçao liqueur",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Blue curaçao liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Whipping cream",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Sugar syrup (2:1)",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Egg white (pasteurised)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/38/alexanders-sister",
+    "name": "Alexander's Sister",
+    "description": "Discover how to make an Alexander's Sister using Gin, Green crème de menthe, Whipping cream, Sugar syrup (2:1) (+ 1 more) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/4A2YR8/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "grated nutmeg",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Gin",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Gin",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Green crème de menthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Green crème de menthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Whipping cream",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Sugar syrup (2:1)",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Egg white (pasteurised)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/39/alexandra",
+    "name": "Alexandra",
+    "description": "Discover how to make an Alexandra using Dark/black rum, Navy rum (ideally 54.5% alc./vol.), Coffee liqueur (+ 2 more) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/BrVKO1/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "grated nutmeg",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Dark/black rum",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Dark/black rum",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Navy rum (ideally 54.5% alc./vol.)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Navy rum (ideally 54.5% alc./vol.)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Coffee liqueur",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Whipping cream",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Whipping cream",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Egg white (pasteurised)",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/40/alfonso",
+    "name": "Alfonso",
+    "description": "Discover how to make an Alfonso using Superfine/caster sugar, Aromatic bitters (+ 2 more) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/ZAPzOg/square/0/512x512.webp?v=1737701571",
+    "glass": "FLUTE GLASS",
+    "garnish": "lemon zest twist",
+    "method": "COAT",
+    "ingredients": [
+      {
+        "raw": "1 cube Superfine/caster sugar",
+        "amount": 1.0,
+        "unit": "cube",
+        "name": "Superfine/caster sugar",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "4 dash Aromatic bitters",
+        "amount": 4.0,
+        "unit": "dash",
+        "name": "Aromatic bitters",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Red quinquina e.g. Dubonnet, Byrrh",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Red quinquina e.g. Dubonnet, Byrrh",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "Top up with Brut sparkling wine",
+        "amount": null,
+        "unit": null,
+        "name": null,
+        "comment": null,
+        "unresolved": true
+      }
+    ],
+    "parse_status": "partial",
+    "parse_errors": [
+      "Unresolved ingredient: Top up with Brut sparkling wine"
+    ]
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/41/algonquin",
+    "name": "Algonquin",
+    "description": "Discover how to make an Algonquin using Rye whiskey 50% abv, Dry vermouth, Bianco/blanco vermouth (+ 2 more) in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/YAkJRW/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "pineapple wedge and Luxardo Maraschino Cherry",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "45 ml Rye whiskey 50% abv",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Rye whiskey 50% abv",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Dry vermouth",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Dry vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Bianco/blanco vermouth",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Bianco/blanco vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "22.5 ml Pineapple juice",
+        "amount": 22.5,
+        "unit": "ml",
+        "name": "Pineapple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "2 dash Creole bitters",
+        "amount": 2.0,
+        "unit": "dash",
+        "name": "Creole bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/42/alice-from-dallas",
+    "name": "Alice From Dallas",
+    "description": "Discover how to make an Alice From Dallas using Coffee liqueur, Grand Marnier and Reposado tequila in just 3 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/MOXBAE/square/0/512x512.webp?v=1737701571",
+    "glass": "SHOT GLASS",
+    "garnish": null,
+    "method": "LAYER",
+    "ingredients": [
+      {
+        "raw": "15 ml Coffee liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Grand Marnier",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Grand Marnier",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Reposado tequila",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/43/alice-in-wonderland-shot",
+    "name": "Alice In Wonderland Shot",
+    "description": "Discover how to make an Alice In Wonderland Shot using Grand Marnier and Reposado tequila in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/DAqMAJ/square/0/512x512.webp?v=1737701571",
+    "glass": "SHOT GLASS",
+    "garnish": "lime wedge",
+    "method": "LAYER",
+    "ingredients": [
+      {
+        "raw": "30 ml Grand Marnier",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Grand Marnier",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Reposado tequila",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/44/all-fall-down",
+    "name": "All Fall Down",
+    "description": "Discover how to make an All Fall Down using Coffee liqueur, Reposado tequila and Navy rum (ideally 54.5% alc./vol.) in just 3 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/7Ov8BA/square/0/512x512.webp?v=1737701571",
+    "glass": "SHOT GLASS",
+    "garnish": null,
+    "method": "LAYER",
+    "ingredients": [
+      {
+        "raw": "15 ml Coffee liqueur",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Coffee liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Reposado tequila",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Navy rum (ideally 54.5% alc./vol.)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Navy rum (ideally 54.5% alc./vol.)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/45/all-white-frappe",
+    "name": "All White Frappé",
+    "description": "Discover how to make an All White Frappé using Sambuca, White crème de cacao, White crème de menthe and Lemon juice in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/KO588r/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "lemon zest twist",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Sambuca",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Sambuca",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml White crème de cacao",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "White crème de cacao",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml White crème de menthe",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "White crème de menthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Lemon juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/50/almond-cocktail",
+    "name": "Almond Cocktail",
+    "description": "Discover how to make an Almond Cocktail using Vodka, Lemon juice, Orgeat syrup, Apple juice and Peach bitters in just 4 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/kA60LO/square/0/512x512.webp?v=1737701571",
+    "glass": "MARTINI GLASS",
+    "garnish": "sink three almonds",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Vodka",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Lemon juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Orgeat syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Orgeat syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Apple juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Apple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "2 dash Peach bitters",
+        "amount": 2.0,
+        "unit": "dash",
+        "name": "Peach bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/51/almond-martini",
+    "name": "Almond Martini",
+    "description": "Discover how to make an Almond Martini using Vodka, Amaretto liqueur, Dry vermouth and Tonka bitters in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/NrblDR/square/1/512x512.webp?v=1769164090",
+    "glass": "MARTINI GLASS",
+    "garnish": "three almonds",
+    "method": "STIR",
+    "ingredients": [
+      {
+        "raw": "60 ml Vodka",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "20 ml Amaretto liqueur",
+        "amount": 20.0,
+        "unit": "ml",
+        "name": "Amaretto liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Dry vermouth",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Dry vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "6 drop Tonka bitters",
+        "amount": 6.0,
+        "unit": "drop",
+        "name": "Tonka bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/52/almond-old-fashioned-tequila-based",
+    "name": "Almond Old Fashioned (tequila based)",
+    "description": "Discover how to make an Almond Old Fashioned (tequila based) using Reposado tequila, Amaretto liqueur (+ 2 more) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/oOnl7A/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "orange zest twist",
+    "method": "STIR",
+    "ingredients": [
+      {
+        "raw": "60 ml Reposado tequila",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Reposado tequila",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Amaretto liqueur",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Amaretto liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Agave syrup",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Agave syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "2 dash Orange bitters",
+        "amount": 2.0,
+        "unit": "dash",
+        "name": "Orange bitters",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/53/amaretto-sour",
+    "name": "Amaretto Sour",
+    "description": "Discover how to make an Amaretto Sour using Amaretto liqueur, Lemon juice, Aromatic bitters and Egg white (pasteurised) in 7 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/JRJewO/square/0/512x512.webp?v=1737701571",
+    "glass": "OLD-FASHIONED GLASS",
+    "garnish": "aromatic bitters (atomised) and skewered lemon slice wheel and Luxardo Maraschino Cherry (sail)",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Amaretto liqueur",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Amaretto liqueur",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Lemon juice",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "1 dash Aromatic bitters",
+        "amount": 1.0,
+        "unit": "dash",
+        "name": "Aromatic bitters",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Egg white (pasteurised)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Egg white (pasteurised)",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/55/amber",
+    "name": "Amber",
+    "description": "Discover how to make an Amber using Fresh ginger, Bison grass vodka, Apple juice, Sugar syrup (2:1) and Apple Schnapps in 7 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/zAMQvA/square/0/512x512.webp?v=1737701571",
+    "glass": "COLLINS GLASS",
+    "garnish": "grated nutmeg and apple wedge",
+    "method": "MUDDLE",
+    "ingredients": [
+      {
+        "raw": "4 slice Fresh ginger",
+        "amount": 4.0,
+        "unit": "slice",
+        "name": "Fresh ginger",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "45 ml Bison grass vodka",
+        "amount": 45.0,
+        "unit": "ml",
+        "name": "Bison grass vodka",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "120 ml Apple juice",
+        "amount": 120.0,
+        "unit": "ml",
+        "name": "Apple juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Sugar syrup (2:1)",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Sugar syrup (2:1)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Apple Schnapps",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Apple Schnapps",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/56/ambrosia",
+    "name": "Ambrosia",
+    "description": "Discover how to make an Ambrosia using Cognac (brandy), Calvados apple brandy, Triple sec, Lemon juice (+ 1 more) in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/nOzX1A/square/0/512x512.webp?v=1737701571",
+    "glass": "FLUTE GLASS",
+    "garnish": "prepare",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "30 ml Cognac (brandy)",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Cognac (brandy)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "30 ml Calvados apple brandy",
+        "amount": 30.0,
+        "unit": "ml",
+        "name": "Calvados apple brandy",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Triple sec",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Triple sec",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "7.5 ml Lemon juice",
+        "amount": 7.5,
+        "unit": "ml",
+        "name": "Lemon juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "105 ml Brut sparkling wine",
+        "amount": 105.0,
+        "unit": "ml",
+        "name": "Brut sparkling wine",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/57/ambrosia-cocktail",
+    "name": "Ambrosia Cocktail",
+    "description": "Discover how to make an Ambrosia Cocktail using Cognac (brandy), Licor 43, Chartreuse Yellow and Advocaat liqueur in just 5 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/VRjlZr/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "grated nutmeg",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "20 ml Cognac (brandy)",
+        "amount": 20.0,
+        "unit": "ml",
+        "name": "Cognac (brandy)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "25 ml Licor 43",
+        "amount": 25.0,
+        "unit": "ml",
+        "name": "Licor 43",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "12.5 ml Chartreuse Yellow",
+        "amount": 12.5,
+        "unit": "ml",
+        "name": "Chartreuse Yellow",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "50 ml Advocaat liqueur",
+        "amount": 50.0,
+        "unit": "ml",
+        "name": "Advocaat liqueur",
+        "comment": null,
+        "unresolved": false
+      }
+    ],
+    "parse_status": "ok",
+    "parse_errors": []
+  },
+  {
+    "source_url": "https://www.diffordsguide.com/cocktails/recipe/58/american-beauty-by-david-embury",
+    "name": "American Beauty (by David Embury)",
+    "description": "Discover how to make an American Beauty (by David Embury) using Cognac (brandy), Dry vermouth, White crème de menthe (+ 3 more) in 6 easy to follow steps",
+    "image_url": "https://cdn.diffordsguide.com/cocktail/9RE7er/square/0/512x512.webp?v=1737701571",
+    "glass": "COUPE GLASS",
+    "garnish": "mint leaf or red rose petal",
+    "method": "SHAKE",
+    "ingredients": [
+      {
+        "raw": "60 ml Cognac (brandy)",
+        "amount": 60.0,
+        "unit": "ml",
+        "name": "Cognac (brandy)",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Dry vermouth",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Dry vermouth",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml White crème de menthe",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "White crème de menthe",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Orange juice",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Orange juice",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "15 ml Grenadine syrup",
+        "amount": 15.0,
+        "unit": "ml",
+        "name": "Grenadine syrup",
+        "comment": null,
+        "unresolved": false
+      },
+      {
+        "raw": "5 ml Claret wine",
+        "amount": 5.0,
+        "unit": "ml",
+        "name": "Claret wine",
         "comment": null,
         "unresolved": false
       }

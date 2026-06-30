@@ -71,7 +71,7 @@ def test_extract_method_invalid_names():
         },
         {
         "@type": "HowToStep",
-        "name": "POUR",
+        "name": "ROUR",
         "url": "https://www.diffordsguide.com/cocktails/recipe/1/abacaxi-ricaco#method-step-5",
         "text": "POUR into the pineapple shell. (The flesh of one pineapple blended with other ingredients will fill two shells.)"
         },
