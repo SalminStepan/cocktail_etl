@@ -39,7 +39,20 @@ def parse_ingredients(ingredients_raw: list[str]) -> list[dict]:
     return clean_parsed_ingredients
 
 def extract_method(instructions_raw: list[dict]) -> str | None:
-    methods = ["STIR", "SHAKE", "BUILD", "BLEND", "DRY SHAKE", "DRY BLEND", "THROW", "MUDDLE"]
+    methods = [
+        "STIR",
+        "SHAKE",
+        "BUILD",
+        "BLEND",
+        "DRY SHAKE",
+        "DRY BLEND",
+        "THROW",
+        "MUDDLE",
+        "LAYER",
+        "POUR",
+        "COAT",
+        "SWIRL"
+    ]
     for step in instructions_raw:
         method = step.get("name", "").strip().upper()
         if method in methods:
