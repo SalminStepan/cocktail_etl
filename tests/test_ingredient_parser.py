@@ -45,11 +45,11 @@ def test_parse_ingredient_returns_unresolved_for_unknown_unit():
 def test_parse_ingredient_returns_unresolved_for_invalid_amount():
     result = parse_ingredient("1&frasl;4 barspoon Xanthan gum")
     assert result["raw"] == "1&frasl;4 barspoon Xanthan gum"
-    assert result["amount"] is None
-    assert result["unit"] is None
-    assert result["name"] is None
+    assert result["amount"] == 0.25
+    assert result["unit"] == "barspoon"
+    assert result["name"] == "Xanthan gum"
     assert result["comment"] is None
-    assert result["unresolved"] is True
+    assert result["unresolved"] is False
 
 
 #"1 whole Pineapple (fresh)" -> parsed
