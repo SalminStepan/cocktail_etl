@@ -23,3 +23,12 @@ def get_recipe_urls(sitemap_url: str, limit: int = 10) -> list[str]:
     all_urls = extract_locs(xml_text)
     urls = filter_recipe_urls(all_urls)
     return urls[:limit]
+
+
+sitemap_url = "https://www.diffordsguide.com/sitemap.xml"
+
+xml_text = fetch_sitemap_xml(sitemap_url)
+urls = extract_locs(xml_text)
+recipe_urls = filter_recipe_urls(urls)
+
+print(len(recipe_urls))

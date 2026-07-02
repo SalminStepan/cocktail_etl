@@ -85,6 +85,15 @@ def parse_ingredient(ingredient_raw: str) -> dict:
         "swath",
         "sprig",
         "knob",
+        "gram",
+        "litre",
+        "bag",
+        "bottle",
+        "cupful",
+        "disc",
+        "ring",
+        "segment",
+        "unit",
     }
 
     count_markers = {"fresh", "dried"}
