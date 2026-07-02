@@ -83,6 +83,8 @@ def parse_ingredient(ingredient_raw: str) -> dict:
         "inch",
         "pea",
         "swath",
+        "sprig",
+        "knob",
     }
 
     count_markers = {"fresh", "dried"}
@@ -207,6 +209,9 @@ def extract_method(instructions_raw: list[dict]) -> str | None:
         "POUR",
         "COAT",
         "SWIRL",
+        "CHURN",
+        "ROLL",
+        "REGAL",
     ]
 
     for step in instructions_raw:

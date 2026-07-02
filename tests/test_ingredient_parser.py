@@ -51,7 +51,19 @@ def test_parse_ingredient_returns_unresolved_for_invalid_amount():
     assert result["comment"] is None
     assert result["unresolved"] is False
 
+def test_parse_ingredient_sprig_unit():
+    ingredient = parse_ingredient("1 sprig Rosemary sprig")
 
-#"1 whole Pineapple (fresh)" -> parsed
-#"4 slice Fresh ginger" -> parsed
-#"7 fresh Mint leaves" -> amount 7, unit count
+    assert ingredient["amount"] == 1.0
+    assert ingredient["unit"] == "sprig"
+    assert ingredient["name"] == "Rosemary sprig"
+    assert ingredient["unresolved"] is False
+
+
+def test_parse_ingredient_knob_unit():
+    ingredient = parse_ingredient("1 knob Unsalted butter")
+
+    assert ingredient["amount"] == 1.0
+    assert ingredient["unit"] == "knob"
+    assert ingredient["name"] == "Unsalted butter"
+    assert ingredient["unresolved"] is False
