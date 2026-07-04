@@ -23,4 +23,6 @@ dist/
 .DS_Store
 
 # json artefacts
-.json
+data/raw_data.json
+data/clean_data.json
+*.sql
