@@ -97,3 +97,11 @@ def replace_ingredients(conn, cocktail_id: int, ingredients: list[dict] | None) 
                 """,
                 params
             )
+
+def clear_database(conn) -> None:
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            TRUNCATE TABLE ingredients, cocktails CASCADE;
+            """
+        )

@@ -1,6 +1,7 @@
 import argparse
 import json
 from pathlib import Path
+from app.db.repository import clear_database
 
 
 from app.db.connection import get_connection
@@ -12,6 +13,11 @@ def parse_args() -> argparse.Namespace:
     )
 
     parser.add_argument("--input", type=str, default="data/clean_data.json", help="Path to clean_data.json")
+    parser.add_argument(
+        "--clear",
+        action="store_true",
+        help="Clear cocktails and ingredients tables before import",
+    )    
     return parser.parse_args()
 
 def load_clean_recipes(path: Path) -> list[dict]:
@@ -30,6 +36,10 @@ def main() -> None:
     conn = get_connection()
 
     try:
+        if args.clear:
+            clear_database(conn)
+            print("Database cleared")
+
         imported_count = import_recipes(conn, clean_recipes)
         conn.commit()
         print(f"Imported recipes: {imported_count}")
