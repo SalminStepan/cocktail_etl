@@ -1,8 +1,7 @@
 import argparse
-import json
 from pathlib import Path
-from app.db.repository import clear_database
-
+from app.db.repository import clear_database 
+from app.clean_storage import load_clean_recipes
 
 from app.db.connection import get_connection
 from app.db.importer import import_recipes
@@ -19,19 +18,12 @@ def parse_args() -> argparse.Namespace:
         help="Clear cocktails and ingredients tables before import",
     )    
     return parser.parse_args()
-
-def load_clean_recipes(path: Path) -> list[dict]:
-    with open(path, "r", encoding="utf-8") as f:
-        clean_recipes = json.load(f)
-        if not isinstance(clean_recipes, list):
-            raise ValueError("clean data file must contain a list")
-        return clean_recipes
     
 def main() -> None:
     args = parse_args()
     input_path = Path(args.input)
 
-    clean_recipes = load_clean_recipes(input_path)
+    clean_recipes = load_clean_recipes(str(input_path))
 
     conn = get_connection()
 
