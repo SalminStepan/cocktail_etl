@@ -2,7 +2,9 @@
 
 ETL pipeline for extracting, normalizing, and importing cocktail recipe data from structured web sources into PostgreSQL.
 
-The project collects cocktail recipe URLs from a sitemap, extracts structured JSON-LD recipe data, normalizes it into a clean internal format, and imports the result into a relational PostgreSQL database.
+The project collects cocktail recipe URLs from a sitemap, extracts structured JSON-LD `Recipe` data, normalizes it into a clean internal format, and imports the result into a relational PostgreSQL database.
+
+Current dataset quality report: [docs/data_quality.md](docs/data_quality.md)
 
 ## Features
 
@@ -15,7 +17,9 @@ The project collects cocktail recipe URLs from a sitemap, extracts structured JS
 * Stores normalized cocktail data in PostgreSQL
 * Uses idempotent cocktail upsert by `source_url`
 * Replaces ingredient lists during re-import to avoid duplicates
-* Provides CLI commands for ETL and database import
+* Supports offline normalization from existing `raw_data.json`
+* Supports full database rebuild from `clean_data.json` with `--clear`
+* Provides CLI commands for ETL, offline normalization, and database import
 * Includes pytest coverage for normalization logic
 
 ## Pipeline
@@ -36,6 +40,51 @@ clean_data.json
 PostgreSQL
 ```
 
+The pipeline is split into separate stages:
+
+```text
+fetch/extract  -> raw_data.json
+normalize      -> clean_data.json
+import         -> PostgreSQL
+```
+
+This allows parser and normalization changes to be tested without re-downloading all recipe pages.
+
+## Current data metrics
+
+Latest full import:
+
+```text
+Cocktails:    6614
+Ingredients:  30761
+```
+
+Parse status:
+
+```text
+ok:       5619
+partial:   995
+failed:      0
+```
+
+Ingredient parsing quality:
+
+```text
+Unresolved ingredients: 11 / 30761
+Parsed successfully:    ~99.96%
+```
+
+Image URL coverage:
+
+```text
+image_url present: 6614 / 6614
+image_url missing: 0 / 6614
+```
+
+Most `partial` recipes are caused by missing `glass` and/or `method` fields in the source JSON-LD data, not by failed ingredient parsing.
+
+See [docs/data_quality.md](docs/data_quality.md) for the full quality report.
+
 ## Project structure
 
 ```text
@@ -50,6 +99,7 @@ cocktail_etl/
 │   ├── import_clean_data.py
 │   ├── logging_config.py
 │   ├── main.py
+│   ├── normalize_raw_data.py
 │   ├── normalizer.py
 │   ├── page_fetcher.py
 │   ├── raw_storage.py
@@ -59,10 +109,14 @@ cocktail_etl/
 ├── data/
 │   ├── raw_data.json
 │   └── clean_data.json
+├── docs/
+│   └── data_quality.md
 ├── tests/
 ├── pyproject.toml
 └── README.md
 ```
+
+Large generated JSON files are not intended to be committed to GitHub.
 
 ## Requirements
 
@@ -106,7 +160,9 @@ Do not commit real database credentials. Use environment variables or a local `.
 
 ## Usage
 
-Run the ETL pipeline and generate JSON files:
+### Run full ETL pipeline
+
+Run the full ETL pipeline and generate both JSON files:
 
 ```bash
 python -m app.main --limit 10
@@ -118,6 +174,28 @@ Custom input/output options are available:
 python -m app.main --help
 ```
 
+Full scrape output:
+
+```bash
+python -m app.main \
+  --raw-output data/raw_data.json \
+  --clean-output data/clean_data.json
+```
+
+### Offline normalization
+
+Rebuild `clean_data.json` from an existing `raw_data.json` without network requests:
+
+```bash
+python -m app.normalize_raw_data \
+  --input data/raw_data.json \
+  --output data/clean_data.json
+```
+
+This is the preferred development workflow after parser or normalization changes.
+
+### Import clean data into PostgreSQL
+
 Import normalized data into PostgreSQL:
 
 ```bash
@@ -128,6 +206,24 @@ Default import path:
 
 ```bash
 python -m app.import_clean_data
+```
+
+### Rebuild database from clean data
+
+For development quality checks, clear existing tables and rebuild the database from `clean_data.json`:
+
+```bash
+python -m app.import_clean_data \
+  --input data/clean_data.json \
+  --clear
+```
+
+The default development cycle is:
+
+```bash
+pytest
+python -m app.normalize_raw_data --input data/raw_data.json --output data/clean_data.json
+python -m app.import_clean_data --input data/clean_data.json --clear
 ```
 
 ## Database model
@@ -165,6 +261,47 @@ Stores ordered ingredients for each cocktail:
 
 Ingredients are replaced on each import for a cocktail, so repeated imports do not create duplicate ingredient rows.
 
+Unresolved ingredients preserve the original `raw` text and are marked with:
+
+```text
+unresolved = true
+```
+
+This allows application layers to safely fall back to the original ingredient string.
+
+## Quality checks
+
+Useful SQL checks after import:
+
+```sql
+SELECT COUNT(*) FROM cocktails;
+
+SELECT COUNT(*) FROM ingredients;
+
+SELECT parse_status, COUNT(*)
+FROM cocktails
+GROUP BY parse_status
+ORDER BY parse_status;
+
+SELECT
+    COUNT(*) FILTER (WHERE glass IS NULL) AS glass_null,
+    COUNT(*) FILTER (WHERE method IS NULL) AS method_null,
+    COUNT(*) FILTER (WHERE glass IS NULL AND method IS NULL) AS both_null,
+    COUNT(*) FILTER (WHERE image_url IS NULL) AS image_url_null
+FROM cocktails;
+
+SELECT COUNT(*)
+FROM ingredients
+WHERE unresolved = true;
+
+SELECT unit, COUNT(*)
+FROM ingredients
+GROUP BY unit
+ORDER BY COUNT(*) DESC;
+```
+
+Current expected results are documented in [docs/data_quality.md](docs/data_quality.md).
+
 ## Testing
 
 Run tests:
@@ -176,6 +313,7 @@ pytest
 The test suite currently covers:
 
 * ingredient parsing
+* unit normalization
 * method extraction
 * glass extraction
 * garnish extraction
@@ -189,18 +327,37 @@ Implemented:
 * page fetching
 * JSON-LD recipe extraction
 * raw and clean JSON storage
+* offline raw-to-clean normalization command
 * recipe normalization
+* ingredient unit normalization
+* image URL extraction
+* parse status tracking
 * PostgreSQL schema
 * database connection
-* cocktail upsert
-* ingredient replacement
+* cocktail upsert by `source_url`
+* ingredient replacement on re-import
 * clean JSON import command
+* full database rebuild mode with `--clear`
 * normalization tests
+* data quality report
 
-Planned:
+Current stable workflow:
 
-* import logging improvements
+```bash
+pytest
+python -m app.normalize_raw_data --input data/raw_data.json --output data/clean_data.json
+python -m app.import_clean_data --input data/clean_data.json --clear
+```
+
+Next planned stages:
+
+* Telegram bot read-only integration with the new PostgreSQL schema
+* repository methods for list/search/detail/ingredient search
+* image URL rendering in Telegram cocktail cards
+* partial-safe recipe rendering
+* FastAPI API layer over the cocktail database
 * repository tests
-* search queries for bot integration
-* bot database adapter
-* optional FastAPI layer
+* Docker setup
+* CI workflow
+* semantic search with `pgvector`
+* RAG endpoint for cocktail recommendations
