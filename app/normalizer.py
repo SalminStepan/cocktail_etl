@@ -283,6 +283,8 @@ def normalize_recipe(raw_recipe: dict) -> dict:
     name = raw_recipe.get("name")
     description = raw_recipe.get("description")
     image_url = raw_recipe.get("image_url")
+    if image_url == "/assets/images/themes/default_v5/cocktails/pixelated.jpg":
+        image_url = None
 
     if not name:
         parse_errors.append("name missing")
