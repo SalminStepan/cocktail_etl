@@ -12,7 +12,7 @@ Current dataset quality report: [docs/data_quality.md](docs/data_quality.md)
 * Fetches recipe pages with request delay
 * Extracts structured JSON-LD `Recipe` data
 * Saves raw recipe data to JSON
-* Normalizes ingredients, method, glass, garnish, image URL, and description
+* Normalizes ingredients, method, glass, garnish, image URL, placeholder images, and description
 * Tracks parsing quality with `parse_status` and `parse_errors`
 * Stores normalized cocktail data in PostgreSQL
 * Uses idempotent cocktail upsert by `source_url`
@@ -74,12 +74,15 @@ Unresolved ingredients: 11 / 30761
 Parsed successfully:    ~99.96%
 ```
 
-Image URL coverage:
+Image URL quality:
 
 ```text
-image_url present: 6614 / 6614
-image_url missing: 0 / 6614
+Real image URLs: 6360
+No image:        254
+Bad image URLs:  0
 ```
+
+Difford's placeholder image is normalized to `NULL` and is not counted as a real cocktail image.
 
 Most `partial` recipes are caused by missing `glass` and/or `method` fields in the source JSON-LD data, not by failed ingredient parsing.
 
@@ -287,8 +290,14 @@ SELECT
     COUNT(*) FILTER (WHERE glass IS NULL) AS glass_null,
     COUNT(*) FILTER (WHERE method IS NULL) AS method_null,
     COUNT(*) FILTER (WHERE glass IS NULL AND method IS NULL) AS both_null,
-    COUNT(*) FILTER (WHERE image_url IS NULL) AS image_url_null
+    COUNT(*) FILTER (WHERE image_url IS NOT NULL) AS real_image_urls,
+    COUNT(*) FILTER (WHERE image_url IS NULL) AS no_image
 FROM cocktails;
+
+SELECT COUNT(*) AS bad_image_urls
+FROM cocktails
+WHERE image_url IS NOT NULL
+  AND image_url !~* '^https?://[^/]+';
 
 SELECT COUNT(*)
 FROM ingredients
@@ -331,6 +340,7 @@ Implemented:
 * recipe normalization
 * ingredient unit normalization
 * image URL extraction
+* placeholder image normalization to `NULL`
 * parse status tracking
 * PostgreSQL schema
 * database connection
@@ -351,13 +361,10 @@ python -m app.import_clean_data --input data/clean_data.json --clear
 
 Next planned stages:
 
-* Telegram bot read-only integration with the new PostgreSQL schema
-* repository methods for list/search/detail/ingredient search
-* image URL rendering in Telegram cocktail cards
-* partial-safe recipe rendering
-* FastAPI API layer over the cocktail database
-* repository tests
-* Docker setup
-* CI workflow
-* semantic search with `pgvector`
-* RAG endpoint for cocktail recommendations
+* keep ETL data quality report in sync with production metrics
+* add repository/import tests
+* add Docker setup
+* add CI workflow
+* expose data through a FastAPI read API
+* add semantic search with `pgvector`
+* add RAG endpoint for cocktail recommendations
