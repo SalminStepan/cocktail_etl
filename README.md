@@ -1,70 +1,72 @@
 # Cocktail ETL
 
-ETL pipeline for extracting, normalizing, and importing cocktail recipe data from structured web sources into PostgreSQL.
+ETL pipeline for extracting, normalizing, validating, and importing cocktail recipe data into PostgreSQL.
 
-The project collects cocktail recipe URLs from a sitemap, extracts structured JSON-LD `Recipe` data, normalizes it into a clean internal format, and imports the result into a relational PostgreSQL database.
+The project discovers cocktail recipe pages through a sitemap, extracts structured JSON-LD `Recipe` data, stores raw snapshots, normalizes recipes into a clean internal representation, and imports the result into a relational PostgreSQL database.
 
-Current dataset quality report: [docs/data_quality.md](docs/data_quality.md)
-
-## Features
-
-* Reads cocktail recipe URLs from sitemap XML
-* Fetches recipe pages with request delay
-* Extracts structured JSON-LD `Recipe` data
-* Saves raw recipe data to JSON
-* Normalizes ingredients, method, glass, garnish, image URL, placeholder images, and description
-* Tracks parsing quality with `parse_status` and `parse_errors`
-* Stores normalized cocktail data in PostgreSQL
-* Uses idempotent cocktail upsert by `source_url`
-* Replaces ingredient lists during re-import to avoid duplicates
-* Supports offline normalization from existing `raw_data.json`
-* Supports full database rebuild from `clean_data.json` with `--clear`
-* Provides CLI commands for ETL, offline normalization, and database import
-* Includes pytest coverage for normalization logic
-
-## Pipeline
+It is the data ingestion layer of the larger Cocktail project:
 
 ```text
-sitemap.xml
+Cocktail ETL
+    ↓
+PostgreSQL
+    ↑
+Cocktail API
+    ↑
+Telegram Bot
+```
+
+Current dataset quality report:
+
+[docs/data_quality.md](docs/data_quality.md)
+
+---
+
+## Status
+
+The ETL pipeline is stable and has successfully produced the current production dataset used by the Cocktail API and Telegram bot.
+
+Current automated test suite:
+
+```text
+19 passed
+```
+
+Implemented pipeline:
+
+```text
+sitemap
     ↓
 recipe URLs
     ↓
-HTML pages
+HTTP fetch
     ↓
-JSON-LD Recipe blocks
+JSON-LD extraction
     ↓
 raw_data.json
+    ↓
+normalization
     ↓
 clean_data.json
     ↓
 PostgreSQL
 ```
 
-The pipeline is split into separate stages:
+The pipeline is intentionally split into separate extraction, normalization, and import stages so parser changes can be tested without repeatedly downloading the full source dataset.
 
-```text
-fetch/extract  -> raw_data.json
-normalize      -> clean_data.json
-import         -> PostgreSQL
-```
+---
 
-This allows parser and normalization changes to be tested without re-downloading all recipe pages.
-
-## Current data metrics
+## Current Dataset
 
 Latest full import:
 
 ```text
-Cocktails:    6614
-Ingredients:  30761
-```
+Cocktails:              6614
+Ingredients:            30761
 
-Parse status:
-
-```text
-ok:       5619
-partial:   995
-failed:      0
+parse_status ok:        5619
+parse_status partial:   995
+parse_status failed:    0
 ```
 
 Ingredient parsing quality:
@@ -77,18 +79,127 @@ Parsed successfully:    ~99.96%
 Image URL quality:
 
 ```text
-Real image URLs: 6360
-No image:        254
-Bad image URLs:  0
+Real image URLs:        6360
+No image:               254
+Bad image URLs:         0
 ```
+
+Most `partial` recipes are caused by missing `glass` and/or `method` fields in the source JSON-LD data rather than failed ingredient parsing.
 
 Difford's placeholder image is normalized to `NULL` and is not counted as a real cocktail image.
 
-Most `partial` recipes are caused by missing `glass` and/or `method` fields in the source JSON-LD data, not by failed ingredient parsing.
+See [docs/data_quality.md](docs/data_quality.md) for detailed quality metrics.
 
-See [docs/data_quality.md](docs/data_quality.md) for the full quality report.
+---
 
-## Project structure
+## Features
+
+* Reads cocktail recipe URLs from sitemap XML
+* Fetches recipe pages over HTTP
+* Applies a request delay during scraping
+* Extracts structured JSON-LD `Recipe` objects
+* Stores raw extracted data in JSON
+* Supports offline re-normalization from existing raw data
+* Normalizes cocktail metadata
+* Normalizes ingredient amounts and units
+* Preserves unresolved ingredient text
+* Extracts method, glass, garnish, description, and image URLs
+* Detects and removes placeholder image URLs
+* Tracks recipe quality through `parse_status`
+* Stores parse diagnostics
+* Imports normalized data into PostgreSQL
+* Uses idempotent cocktail upsert by `source_url`
+* Replaces ingredient collections during re-import
+* Supports complete database rebuild with `--clear`
+* Provides CLI entrypoints for extraction, normalization, and import
+* Includes automated normalization tests
+* Includes a reproducible data quality report
+
+---
+
+## Pipeline Architecture
+
+The ETL pipeline consists of three main stages.
+
+### 1. Extract
+
+```text
+sitemap.xml
+    ↓
+recipe URLs
+    ↓
+HTML pages
+    ↓
+JSON-LD Recipe
+    ↓
+raw_data.json
+```
+
+This stage preserves extracted source data with minimal transformation.
+
+### 2. Normalize
+
+```text
+raw_data.json
+    ↓
+normalizer
+    ↓
+validated internal models
+    ↓
+clean_data.json
+```
+
+This stage handles:
+
+* ingredient parsing
+* amount normalization
+* unit normalization
+* cocktail metadata extraction
+* missing-field handling
+* placeholder image detection
+* parse quality classification
+
+### 3. Import
+
+```text
+clean_data.json
+    ↓
+importer
+    ↓
+repository
+    ↓
+PostgreSQL
+```
+
+The import stage is idempotent for cocktails by `source_url`.
+
+Ingredient rows for an existing cocktail are replaced during re-import, preventing duplicate ingredient collections.
+
+---
+
+## Development Workflow
+
+The normal development cycle does not require downloading the entire source dataset again.
+
+After changing normalization logic:
+
+```bash
+pytest -q
+
+python -m app.normalize_raw_data \
+  --input data/raw_data.json \
+  --output data/clean_data.json
+
+python -m app.import_clean_data \
+  --input data/clean_data.json \
+  --clear
+```
+
+This makes normalization development deterministic and significantly faster than performing a full network scrape for every parser change.
+
+---
+
+## Project Structure
 
 ```text
 cocktail_etl/
@@ -98,6 +209,7 @@ cocktail_etl/
 │   │   ├── importer.py
 │   │   ├── repository.py
 │   │   └── schema.sql
+│   │
 │   ├── clean_storage.py
 │   ├── import_clean_data.py
 │   ├── logging_config.py
@@ -109,75 +221,99 @@ cocktail_etl/
 │   ├── recipe_extractor.py
 │   ├── schemas.py
 │   └── sitemap_reader.py
+│
 ├── data/
 │   ├── raw_data.json
 │   └── clean_data.json
+│
 ├── docs/
 │   └── data_quality.md
+│
 ├── tests/
 ├── pyproject.toml
 └── README.md
 ```
 
-Large generated JSON files are not intended to be committed to GitHub.
+Large raw and normalized dataset snapshots are local/generated artifacts and are not intended to be part of the main Git repository history.
 
-## Requirements
+---
+
+## Tech Stack
 
 * Python 3.12+
 * PostgreSQL
-* `httpx`
-* `beautifulsoup4`
-* `psycopg`
-* `pytest` for development/testing
+* psycopg 3
+* HTTPX
+* Beautiful Soup
+* Pydantic
+* pytest
+
+---
 
 ## Installation
+
+Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-
-pip install -e ".[dev]"
 ```
 
-## Database setup
+Install the project with development dependencies:
 
-Create PostgreSQL database:
+```bash
+python -m pip install -e ".[dev]"
+```
+
+---
+
+## Database Setup
+
+Create the PostgreSQL database:
 
 ```bash
 sudo -u postgres createdb cocktail_etl
 ```
 
-Apply schema:
+Apply the schema:
 
 ```bash
-sudo -u postgres psql -d cocktail_etl -f app/db/schema.sql
+sudo -u postgres psql \
+  -d cocktail_etl \
+  -f app/db/schema.sql
 ```
 
-Create a database user for the application and set `DATABASE_URL`:
+Configure the database connection:
 
 ```bash
 export DATABASE_URL="postgresql://cocktail_user:cocktail_password@localhost:5432/cocktail_etl"
 ```
 
-Do not commit real database credentials. Use environment variables or a local `.env` file.
+Real database credentials must not be committed to Git.
+
+Use environment variables or local environment configuration instead.
+
+---
 
 ## Usage
 
-### Run full ETL pipeline
+### Run a limited ETL pipeline
 
-Run the full ETL pipeline and generate both JSON files:
+For development:
 
 ```bash
 python -m app.main --limit 10
 ```
 
-Custom input/output options are available:
+Available CLI options:
 
 ```bash
 python -m app.main --help
 ```
 
-Full scrape output:
+---
+
+### Run a full scrape
 
 ```bash
 python -m app.main \
@@ -185,9 +321,13 @@ python -m app.main \
   --clean-output data/clean_data.json
 ```
 
-### Offline normalization
+A full scrape performs network requests to the source website and should not be required for ordinary normalization development.
 
-Rebuild `clean_data.json` from an existing `raw_data.json` without network requests:
+---
+
+### Offline Normalization
+
+Rebuild normalized data from an existing raw dataset:
 
 ```bash
 python -m app.normalize_raw_data \
@@ -195,25 +335,30 @@ python -m app.normalize_raw_data \
   --output data/clean_data.json
 ```
 
-This is the preferred development workflow after parser or normalization changes.
+This is the preferred workflow after modifying parsing or normalization logic.
 
-### Import clean data into PostgreSQL
+---
 
-Import normalized data into PostgreSQL:
+### Import Clean Data
+
+Import normalized recipes into PostgreSQL:
 
 ```bash
-python -m app.import_clean_data --input data/clean_data.json
+python -m app.import_clean_data \
+  --input data/clean_data.json
 ```
 
-Default import path:
+Using the default path:
 
 ```bash
 python -m app.import_clean_data
 ```
 
-### Rebuild database from clean data
+---
 
-For development quality checks, clear existing tables and rebuild the database from `clean_data.json`:
+### Rebuild the Database
+
+Clear the current cocktail and ingredient data and rebuild the database from normalized JSON:
 
 ```bash
 python -m app.import_clean_data \
@@ -221,150 +366,363 @@ python -m app.import_clean_data \
   --clear
 ```
 
-The default development cycle is:
+This mode is useful for development and data quality verification.
 
-```bash
-pytest
-python -m app.normalize_raw_data --input data/raw_data.json --output data/clean_data.json
-python -m app.import_clean_data --input data/clean_data.json --clear
-```
+It should be used deliberately because it replaces the current imported dataset.
 
-## Database model
+---
+
+## Database Model
 
 ### `cocktails`
 
-Stores normalized cocktail-level data:
+Stores normalized recipe-level information.
 
-* source
-* source_url
-* name
-* description
-* image_url
-* glass
-* garnish
-* method
-* parse_status
-* created_at
-* updated_at
+Important fields:
 
-`source_url` is unique and is used for idempotent imports.
+```text
+source
+source_url
+name
+description
+image_url
+glass
+garnish
+method
+parse_status
+created_at
+updated_at
+```
+
+`source_url` is unique and acts as the stable source identifier used for idempotent imports.
+
+---
 
 ### `ingredients`
 
-Stores ordered ingredients for each cocktail:
+Stores ordered ingredients associated with cocktails.
 
-* cocktail_id
-* position
-* raw
-* amount
-* unit
-* name
-* comment
-* unresolved
+Important fields:
 
-Ingredients are replaced on each import for a cocktail, so repeated imports do not create duplicate ingredient rows.
+```text
+cocktail_id
+position
+raw
+amount
+unit
+name
+comment
+unresolved
+```
 
-Unresolved ingredients preserve the original `raw` text and are marked with:
+The original ingredient text is always retained in `raw`.
+
+If an ingredient cannot be reliably normalized, it is preserved and marked:
 
 ```text
 unresolved = true
 ```
 
-This allows application layers to safely fall back to the original ingredient string.
+This prevents parser uncertainty from causing source data loss.
 
-## Quality checks
+---
+
+## Data Quality Strategy
+
+The ETL pipeline prefers preserving incomplete information over silently producing incorrect normalized data.
+
+Recipes are assigned a parsing status.
+
+### `ok`
+
+The recipe was normalized without known structural problems.
+
+### `partial`
+
+The recipe is usable but one or more optional or expected source fields could not be extracted.
+
+Typical examples:
+
+```text
+glass missing
+method missing
+```
+
+### `failed`
+
+The recipe could not be normalized into a usable representation.
+
+Current dataset:
+
+```text
+failed: 0
+```
+
+Unresolved ingredients are tracked separately from cocktail-level `parse_status`.
+
+This allows the dataset to remain usable while making normalization uncertainty measurable.
+
+---
+
+## Quality Checks
 
 Useful SQL checks after import:
 
 ```sql
-SELECT COUNT(*) FROM cocktails;
+SELECT COUNT(*)
+FROM cocktails;
+```
 
-SELECT COUNT(*) FROM ingredients;
+```sql
+SELECT COUNT(*)
+FROM ingredients;
+```
 
-SELECT parse_status, COUNT(*)
+Parse status distribution:
+
+```sql
+SELECT
+    parse_status,
+    COUNT(*)
 FROM cocktails
 GROUP BY parse_status
 ORDER BY parse_status;
+```
 
+Missing cocktail metadata:
+
+```sql
 SELECT
-    COUNT(*) FILTER (WHERE glass IS NULL) AS glass_null,
-    COUNT(*) FILTER (WHERE method IS NULL) AS method_null,
-    COUNT(*) FILTER (WHERE glass IS NULL AND method IS NULL) AS both_null,
-    COUNT(*) FILTER (WHERE image_url IS NOT NULL) AS real_image_urls,
-    COUNT(*) FILTER (WHERE image_url IS NULL) AS no_image
-FROM cocktails;
+    COUNT(*) FILTER (
+        WHERE glass IS NULL
+    ) AS glass_null,
 
+    COUNT(*) FILTER (
+        WHERE method IS NULL
+    ) AS method_null,
+
+    COUNT(*) FILTER (
+        WHERE glass IS NULL
+          AND method IS NULL
+    ) AS both_null,
+
+    COUNT(*) FILTER (
+        WHERE image_url IS NOT NULL
+    ) AS real_image_urls,
+
+    COUNT(*) FILTER (
+        WHERE image_url IS NULL
+    ) AS no_image
+
+FROM cocktails;
+```
+
+Invalid image URLs:
+
+```sql
 SELECT COUNT(*) AS bad_image_urls
 FROM cocktails
 WHERE image_url IS NOT NULL
   AND image_url !~* '^https?://[^/]+';
+```
 
+Unresolved ingredients:
+
+```sql
 SELECT COUNT(*)
 FROM ingredients
 WHERE unresolved = true;
+```
 
-SELECT unit, COUNT(*)
+Unit distribution:
+
+```sql
+SELECT
+    unit,
+    COUNT(*)
 FROM ingredients
 GROUP BY unit
 ORDER BY COUNT(*) DESC;
 ```
 
-Current expected results are documented in [docs/data_quality.md](docs/data_quality.md).
+Expected production metrics are documented in:
+
+[docs/data_quality.md](docs/data_quality.md)
+
+---
 
 ## Testing
 
-Run tests:
+Run the test suite:
 
 ```bash
-pytest
+pytest -q
 ```
 
-The test suite currently covers:
+Current result:
+
+```text
+19 passed
+```
+
+The tests primarily cover normalization behavior, including:
 
 * ingredient parsing
+* amount extraction
 * unit normalization
 * method extraction
 * glass extraction
 * garnish extraction
+* image handling
 * full recipe normalization
 
-## Current status
+Repository and database integration tests against a dedicated PostgreSQL test database are planned as a separate stage.
 
-Implemented:
+---
 
-* sitemap reading
-* page fetching
-* JSON-LD recipe extraction
-* raw and clean JSON storage
-* offline raw-to-clean normalization command
-* recipe normalization
-* ingredient unit normalization
-* image URL extraction
-* placeholder image normalization to `NULL`
-* parse status tracking
-* PostgreSQL schema
-* database connection
-* cocktail upsert by `source_url`
-* ingredient replacement on re-import
-* clean JSON import command
-* full database rebuild mode with `--clear`
-* normalization tests
-* data quality report
+## Current Status
 
-Current stable workflow:
+Completed:
 
-```bash
-pytest
-python -m app.normalize_raw_data --input data/raw_data.json --output data/clean_data.json
-python -m app.import_clean_data --input data/clean_data.json --clear
+```text
+Sitemap discovery                       ✅
+HTTP page fetching                      ✅
+JSON-LD Recipe extraction               ✅
+Raw JSON storage                        ✅
+Offline normalization                   ✅
+Clean JSON storage                      ✅
+Ingredient parsing                      ✅
+Unit normalization                      ✅
+Recipe metadata normalization           ✅
+Image URL extraction                    ✅
+Placeholder image handling              ✅
+Parse quality tracking                  ✅
+PostgreSQL schema                       ✅
+Database connection                     ✅
+Idempotent cocktail import              ✅
+Ingredient replacement on re-import     ✅
+Full database rebuild mode              ✅
+Normalization test suite                ✅
+Data quality reporting                  ✅
+Full 6,614-cocktail dataset             ✅
+FastAPI read layer                      ✅ separate project
+Telegram read client                    ✅ separate project
 ```
 
-Next planned stages:
+The ETL layer itself is now considered stable.
 
-* keep ETL data quality report in sync with production metrics
-* add repository/import tests
-* add Docker setup
-* add CI workflow
-* expose data through a FastAPI read API
-* add semantic search with `pgvector`
-* add RAG endpoint for cocktail recommendations
+New feature development should primarily happen in downstream services unless changes to data extraction or normalization are required.
+
+---
+
+## Roadmap
+
+Next ETL-specific engineering stages:
+
+```text
+1. Repository/import integration tests      ⏳ planned
+2. Dedicated PostgreSQL test database       ⏳ planned
+3. GitHub Actions CI                        ⏳ planned
+4. Schema migration strategy                ⏳ planned
+5. Keep data quality metrics synchronized   ⏳ ongoing
+6. Dataset refresh workflow                 ⏳ planned
+```
+
+Project-wide downstream development:
+
+```text
+Cocktail API
+    ↓
+pgvector semantic search
+    ↓
+retrieval
+    ↓
+RAG /ask
+    ↓
+Telegram integration
+    ↓
+Telegram Mini App
+```
+
+The ETL project may later provide data preparation or embedding backfill utilities if the semantic-search architecture requires them, but vector search and RAG request handling belong to the backend API layer rather than the scraping pipeline.
+
+---
+
+## Related Projects
+
+### Cocktail API
+
+Read-only FastAPI backend over the PostgreSQL dataset.
+
+Responsibilities include:
+
+* cocktail listing
+* cocktail search
+* cocktail lookup
+* ingredient search
+* dataset statistics
+* health checks
+* response validation
+* backend error handling
+* Dockerized API runtime
+
+Repository:
+
+```text
+https://github.com/SalminStepan/cocktail_api
+```
+
+### Cocktail Recipe Telegram Bot
+
+Telegram interface consuming the Cocktail API over HTTP.
+
+Responsibilities include:
+
+* recipe browsing
+* search
+* pagination
+* cocktail cards
+* API response validation
+* Telegram interaction
+* usage analytics
+
+Repository:
+
+```text
+https://github.com/SalminStepan/cocktail_manager_bot_tg
+```
+
+---
+
+## Attribution
+
+This is a non-commercial educational portfolio project.
+
+Recipe data is collected for educational and technical demonstration purposes.
+
+The downstream applications preserve source attribution and links to the original recipe pages.
+
+The project is not affiliated with or endorsed by Difford's Guide.
+
+---
+
+## Author
+
+Stepan Salmin
+
+Junior Python Backend Developer
+
+Focus:
+
+```text
+Python
+PostgreSQL
+SQL
+ETL
+FastAPI
+backend architecture
+data quality
+testing
+Docker
+AI / RAG systems
+```
